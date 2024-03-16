@@ -7,6 +7,9 @@ license-file = "LICENSE"
 keywords = [ "terminal", "crossterm", "light-weight" ]
 description = "A simple wrapper for `crossterm` to increase performance"
 documentation = "https://docs.rs/crossterm-display"
+repository = "https://github.com/angelcaru/crossterm-display"
+homepage = "https://github.com/angelcaru/crossterm-display"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
