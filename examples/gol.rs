@@ -71,7 +71,7 @@ impl GoL for GoLBoard {
     fn render(&self, td: &mut TerminalDisplay) -> Result<(), std::io::Error> {
         for (y, row) in self.iter().enumerate() {
             for (x, &cell) in row.iter().enumerate() {
-                let ch = if cell { b'#' } else { b' ' };
+                let ch = if cell { '#' } else { ' ' };
                 td.write(
                     x,
                     y,
@@ -179,7 +179,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             cur.0 as usize,
             cur.1 as usize,
             Cell {
-                ch: b'@',
+                ch: '@',
                 fg: Color::White,
                 bg: GRAYISH,
                 attr: Attribute::Reset,

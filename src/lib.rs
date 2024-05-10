@@ -10,7 +10,7 @@ use std::io::Write;
 /// A single character on the screen
 pub struct Cell {
     /// The character itself
-    pub ch: u8,
+    pub ch: char,
     /// The foreground color
     pub fg: Color,
     /// The background color
@@ -34,7 +34,7 @@ impl Cell {
     /// Create an empty cell of a certain color
     pub const fn empty_colored(color: Color) -> Self {
         Self {
-            ch: b' ',
+            ch: ' ',
             fg: Color::White,
             bg: color,
             attr: Attribute::Reset,
@@ -45,7 +45,10 @@ impl Cell {
         q.queue(style::SetAttribute(self.attr))?;
         q.queue(style::SetForegroundColor(self.fg))?;
         q.queue(style::SetBackgroundColor(self.bg))?;
-        q.write_all(&[self.ch])?;
+
+        let mut buf = [0u8; 4];
+        let buf = self.ch.encode_utf8(&mut buf).as_bytes();
+        q.write_all(&buf)?;
         Ok(())
     }
 }
